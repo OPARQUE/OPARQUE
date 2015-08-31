@@ -1,0 +1,16 @@
+projetos:
+  name: Projetos
+  singular_name: Projeto
+  fields:
+    nome:
+      type: text
+      class: large
+      group: "Conteúdo"
+    slug:
+      type: slug
+      uses: nome
+    imagem:
+      type: image
+    texto:
+      type: html
+      height: 350px
