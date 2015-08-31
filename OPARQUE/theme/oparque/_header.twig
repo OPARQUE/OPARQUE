@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="{{ htmllang() }}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        {% if record.title is defined %}{{ record.title|striptags }}
+        {% else %} OPARQUE {% endif %}
+    </title>
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ paths.theme }}css/main.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/"><span class="img-logo"></span></a>
+        </div>
+
+        <div class="menu-button">
+            <button class="button-open" onclick="toggleMenu(); return false;"></button>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/">Sobre</a></li>
+                <li><a href="/projetos/">Projetos</a></li>
+                <li><a href="/">Onde Estamos</a></li>
+                <li><a href="/">Notícias</a></li>
+                <li><a href="/">Agenda</a></li>
+                <li><a href="/">Contatos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
