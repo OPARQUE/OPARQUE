@@ -1,15 +1,91 @@
 @import "common.scss";
 
-$input-width: 21rem;
+$email-input-margin: 2%;
 
 footer {
     position: relative;
-    font-size: 1.4rem;
     background-color: white;
+    font-size: 1.6rem;
     padding: 2rem;
     margin-top: 4rem;
+    text-align: center;
 
-    /*a {
+    .social {
+        img {
+            width: 4rem;
+            margin: 1rem;
+        }
+    }
+
+    .conecte {
+        margin: 3rem 0;
+
+        p {
+            margin: .5rem 0;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        form {
+            margin-top: 3rem;
+        }
+
+        input {
+            margin-top: $email-input-margin;
+            width: 100%;
+        }
+    }
+
+    @media all and (min-width: 30rem /*480px*/ ) {
+        .conecte {
+            $email-input-margin: 1%;
+
+            p {
+                font-size: 1.8rem;
+            }
+
+            input {
+                margin-top: $email-input-margin;
+            }
+
+            #nome, #sobrenome {
+                width: (100% - $email-input-margin) / 2;
+            }
+
+            #nome {
+                margin-right: $email-input-margin;
+            }
+        }
+    }
+
+    @media all and (min-width: 45rem /*720px*/ ) {
+        .conecte {
+            $email-input-margin: 1%;
+            $width: (100% - 3 * $email-input-margin) / 4;
+
+            #nome, #sobrenome {
+                width: $width;
+                margin-right: $email-input-margin;
+            }
+
+            #email {
+                width: 1.5 * $width;
+                margin-right: $email-input-margin;
+            }
+
+            input[type=submit] {
+                width: .5 * $width;
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+/*a {
         text-decoration: none;
         color: $oparque-black;
     }
@@ -77,10 +153,9 @@ footer {
             background-image: url(../images/right-arrow.svg);
         }
     }*/
-}
 
 @media all and (min-width: 22rem /*352px*/ ) {
-    $input-width: 29rem;
+    /*$input-width: 29rem;
 
     footer {
         font-size: 1.6rem;
@@ -102,11 +177,11 @@ footer {
         .search input[type=text], .contato input[type=email] {
             width: $input-width;
         }
-    }
+    }*/
 }
 
 @media all and (min-width: 42rem /*672px*/ ) {
-    footer {
+    /*footer {
         address {
             vertical-align: top;
             display: inline-block;
@@ -132,11 +207,11 @@ footer {
         .contato p {
             margin-top: 1rem;
         }
-    }
+    }*/
 }
 
 @media all and (min-width: 50rem /*800px*/ ) {
-    footer {
+    /*footer {
         padding: 2rem 10%;
-    }
+    }*/
 }

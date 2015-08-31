@@ -24,8 +24,7 @@ html {
 
 body {
     margin: 0;
-    //background-color: red; //TESTE
-    font-size: 1.6em;
+    font-size: $text-size;
 }
 
 /* HTML5 display definitions
@@ -96,6 +95,7 @@ template {
 
 a {
     background-color: transparent;
+    color: $oparque-black;
 }
 
 /**
@@ -106,8 +106,6 @@ a:active,
 a:hover {
     outline: 0;
 }
-
-
 
 /* Text-level semantics
    ========================================================================== */
@@ -460,14 +458,27 @@ html {
     box-sizing: inherit;
 }
 
-/* Side margin*/
+/* Margem lateral de todo o conteúdo*/
 main {
     padding: 0 2rem;
 }
 
-/* Muda outline dos botões ao clicar */
-button:focus, input[type=submit], input[type=reset] {
-    outline: 2px solid $oparque-orange;
+/* Em geral, campos de formulário tem a cara abaixo */
+button, input {
+    border: .3rem solid $oparque-black;
+    padding: .5rem 1rem;
+    vertical-align: middle;
+    /* Muda outline dos botões e campos de formulário ao ativar */
+    &:focus {
+        border-color: $oparque-orange;
+        outline: none;
+    }
+}
+
+/* Botões invertem o padrão de cores */
+button, input[type=submit], input[type=reset] {
+    background-color: $oparque-black;
+    color: $oparque-white;
 }
 
 /* Remove margin, padding and bullet points from list*/
@@ -477,27 +488,20 @@ ul, ol, li {
     margin: 0;
 }
 
-/* Filhos de formulário e lista possuim fonte em tamanho padrão */
+/*  
+    Formulário e listas possuim fonte em tamanho zero para evitar
+    espaços em branco devido à formatação do HTML
+*/
+ul, ol, form {
+    font-size: 0;
+}
+
+/* Seus filhos possuim tamanho padrão */
 input, li {
     font-size: $text-size;
 }
 
-/* Em geral, campos de formulário tem a cara abaixo */
-input[type=text], input[type=email], input[type=submit] {
-    border: .3rem solid $oparque-black;
-    padding: .5rem 1rem;
-    vertical-align: middle;
-
-    @include placeholderColor($oparque-black);
-
-    &:focus {
-        border-color: $oparque-orange;
-        outline: none;
-    }
-}
-
-/* Botões invertem o padrão de cores */
-input[type=submit] {
-    background-color: $oparque-black;
-    color: $oparque-white;
+/* Remove itálico da fonte do "address" */
+address {
+    font-style: normal;
 }
