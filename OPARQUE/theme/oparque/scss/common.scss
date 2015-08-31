@@ -1,0 +1,48 @@
+/* Cores */
+$oparque-black: rgb(0, 0, 0);
+$oparque-white: rgb(255, 255, 255);
+
+$oparque-gray: rgb(76, 76, 78);
+$oparque-blue: rgb(58, 85, 155);
+$oparque-cyan: rgb(20, 176, 230);
+$oparque-green: rgb(0, 166, 142);
+$oparque-yellow: rgb(254, 194, 33);
+$oparque-orange: rgb(239, 64, 40);
+$oparque-purple: rgb(181, 81, 146);
+
+/* Tamanhos */
+$text-size: 1.6rem;
+
+/* Posiciona uma imagem ao fundo de um elemento */
+@mixin backImage($url: "", $position: center, $size: contain) {
+    border: none;
+    background-color: inherit;
+    background-position: $position;
+    background-size: $size;
+    background-repeat: no-repeat;
+
+    @if $url != "" {
+        background-image: url($url);
+    }
+}
+
+/* Modifica a cor de um texto "placeholder" */
+@mixin placeholderColor($color) {
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+
+    &:-moz-placeholder {
+        color: $color;
+        opacity: 1;
+    }
+
+    &::-moz-placeholder {
+        color: $color;
+        opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+        color: $color;
+    }
+}

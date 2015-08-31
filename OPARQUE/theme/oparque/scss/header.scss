@@ -1,0 +1,176 @@
+@import "common.scss";
+
+header {
+    position: relative;
+    background-color: white;
+    padding: 2rem;
+
+    .logo {
+        text-align: center;
+
+        a {
+            display: inline-block;
+            height: 9rem;
+            width: 100%;
+            max-width: 30rem;
+        }
+
+        .img-logo {
+            display: inline-block;
+            @include backImage("../images/logo1.svg");
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .menu-button button {
+        @include backImage("", top);
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .button-open {
+        background-image: url(../images/down-arrow.svg);
+    }
+
+    .button-close {
+        background-image: url(../images/close.svg);
+    }
+
+    nav {
+        display: none;
+        margin-bottom: 1rem;
+
+        ul {
+            width: 22.5rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            text-transform: lowercase;
+            margin-top: 1rem;
+        }
+
+        a {
+            color: $oparque-black;
+            text-decoration: none;
+            font-size: 2.1rem;
+        }
+    }
+}
+
+@media all and (min-width: 42rem /*672px*/ ) {
+    header {
+        margin-bottom: 3rem;
+
+        .logo {
+            a {
+                max-width: 23rem;
+                height: 23rem;
+            }
+
+            .img-logo {
+                background-image: url(../images/logo2.svg);
+            }
+        }
+
+        .menu-button {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+        }
+
+        nav {
+            position: absolute;
+            top: 6rem;
+            width: 20rem;
+        }
+    }
+}
+
+@media all and (min-width: 64rem) {
+    header {
+        .logo {
+            a {
+                max-width: 30rem;
+                height: 10rem;
+            }
+
+            .img-logo {
+                background-image: url(../images/logo3.svg);
+            }
+        }
+
+        .menu-button {
+            display: none;
+        }
+
+        .social {
+            text-align: left;
+            width: 20rem;
+            left: 2rem;
+            top: 12rem;
+        }
+
+        nav {
+            display: block;
+            text-align: center;
+            left: 0;
+            width: 100%;
+
+            ul {
+                display: inline-block;
+                position: static;
+                width: 100%;
+                -moz-transform: translateX(-1.5%);
+                -ms-transform: translateX(-1.5%);
+                -o-transform: translateX(-1.5%);
+                -webkit-transform: translateX(-1.5%);
+                transform: translateX(-1.5%);
+            }
+
+            li {
+                display: inline-block;
+
+                a {
+                    font-size: 2rem;
+                }
+
+                &:nth-child(1), &:nth-child(2) {
+                    margin-right: 2rem;
+                }
+
+                &:nth-child(5), &:nth-child(6) {
+                    margin-left: 2rem;
+                }
+
+                &:nth-child(3) {
+                    margin-right: 35%;
+                }
+            }
+        }
+    }
+}
+
+@media all and (min-width: 68rem /*1056px*/ ) {
+    header nav li {
+        &:nth-child(1), &:nth-child(2) {
+            margin-right: 3rem;
+        }
+
+        &:nth-child(5), &:nth-child(6) {
+            margin-left: 3rem;
+        }
+
+        &:nth-child(3) {
+            margin-right: 35%;
+        }
+    }
+}
+
+@media all and (min-width: 70rem /*1120px*/ ) {
+    header nav li a {
+        font-size: 2.2rem;
+    }
+}

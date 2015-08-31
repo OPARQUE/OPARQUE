@@ -72,3 +72,6 @@ OPARQUE/app/database/*
 OPARQUE/files/*
 !OPARQUE/files/index.html
 !OPARQUE/files/.htaccess
+
+# Ignora CSS's compilados
+OPARQUE/theme/oparque/css/
