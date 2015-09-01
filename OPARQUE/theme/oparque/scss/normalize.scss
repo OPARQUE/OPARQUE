@@ -331,6 +331,7 @@ input::-moz-focus-inner {
 
 input {
     line-height: normal;
+    @include placeholderColor(lighten($oparque-gray, 10%));
 }
 
 /**

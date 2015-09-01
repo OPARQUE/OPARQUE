@@ -1,0 +1,230 @@
+/* Ângulo de inclinação do site */
+$skewDegrees: 5deg;
+
+/*
+    Valor aproximado da tangente de 5deg. Arredondado para cima.
+    Este valor é adicionado automaticamente à altura ou largura
+    de um elemento quando ele é inclinado.
+*/
+$tgSkewDegrees: .0875;
+
+/* Inclina um objeto e seus filhos */
+@mixin transformSkew ($degrees) {
+    -moz-transform: skewY($degrees);
+    -ms-transform: skewY($degrees);
+    -o-transform: skewY($degrees);
+    -webkit-transform: skewY($degrees);
+    transform: skewY($degrees);
+}
+
+.transformSkewUp {
+    @include transformSkew(-$skewDegrees);
+}
+
+.transformSkewDown {
+    @include transformSkew($skewDegrees);
+}
+
+/*
+    Muda o ponto de origem da transformação de um objeto.
+    Geralmente aplicado à .background quando o posicionamento do
+    conteúdo interno posicionado nos cantos está saindo da caixa
+*/
+@mixin originSkew ($origin) {
+    -moz-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    -o-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+.originLeft {
+    @include originSkew(left);
+}
+
+.originRight {
+    @include originSkew(right);
+}
+
+
+/*  Prepara um objeto com imagem de fundo para ser inclinado.
+    Requer a seguinte estrutura:
+    
+    <div class="skewed(Up|Down)" style="width: (w); height: (h)">
+        <div class="background">
+            <div class="image" style="background-image: url(img)"></div>
+        </div>
+
+        <div class="content">Informações aqui</div>
+    </div>
+*/
+.skewed {
+    display: inline-block;
+    position: relative;
+    /*  Container da imagem de background
+        É necessário separar o container da imagem propriamente dita
+        pois estes serão inclinados e desinclinados individualmente
+    */
+    > .background {
+        /* Coloca a frente de todo conteúdo*/
+        position: absolute;
+        z-index: 1;
+        /*  É necessário remover o padding e margin da caixa para que seja
+            possível modificar a altura do container conforme sua largura
+         */
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        /* Ocupa todo o espaço */
+        width: 100%;
+        height: 100%;
+        /* POG pro Chrome parar de exibir o fundo serrilhado */
+        -moz-backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        /*  A imagem interna precisará ser maior que o container para que
+            o espaço vazio criado pelo skew não apareça. Assim é necessário
+            esconder o que sobrar dela.
+        */
+        overflow: hidden;
+
+        .image {
+            /* Ocupa todo o espaço */
+            width: 100%;
+            height: 100%;
+            /*  Valores para o padding em porcentagem são relacionado à largura, mesmo
+                para top e bottom. Desta forma o objeto é redimensionado conforme o deslocamento
+                aplicado pelo skew.
+            */
+            padding-top: 100% * $tgSkewDegrees;
+            /* Desloca a imagem metade do valor aumentado para centralizar */
+            margin-top: -50% * $tgSkewDegrees;
+            /* Centraliza a largura e garante que a imagem cubra todo o container */
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+
+    > .content {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        /* Posiciona à frente do background */
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/* Inclina para cima */
+.skewedUp {
+    @extend .skewed;
+
+    .background {
+        /* Inclina o container */
+        @extend .transformSkewUp;
+
+        .image {
+            /* Desinclina a image */
+            @extend .transformSkewDown;
+        }
+    }
+}
+
+/* Inclina para baixo */
+.skewedDown {
+    @extend .skewed;
+
+    .background {
+        /* Inclina o container */
+        @extend .transformSkewDown;
+
+        .image {
+            /* Desinclina a image */
+            @extend .transformSkewUp;
+        }
+    }
+}
+
+/*  Modifica a posição dos objetos para se adequar a diversas colunas
+    quandos estes estiver inclinados para cima
+*/
+@mixin skewedUpBreakPoints($width, $columns) {
+    @if ($columns == 2) {
+        /*  Para duas colunas, desloca toda a primeira para baixo
+            adicionando um padding ao topo dos objetos.
+        */
+        &:nth-child(2n+1) {
+            padding-top: $width * $tgSkewDegrees;
+        }
+    }
+
+    @else if ($columns == 3) {
+        /*
+            Tipicamente, um número de colunas maior é usado para com uma largura
+            também maior, por isso é necessário remover as dimensões anteriores
+        */
+        @include skewedUpBreakPoints(0, 2);
+
+        &:nth-child(3n+1), &:nth-child(3n+2) {
+            padding-top: $width * $tgSkewDegrees;
+        }
+    }
+}
+
+/* Semelhante à anterior, porém para elemento de inclinação para baixo */
+@mixin skewedDownBreakPoints($width, $margin, $columns) {
+    /* O deslocamento total é a largura mais a margem direita */
+    $width: $width + $margin;
+
+    /*  Para duas colunas, desloca toda a segunda para baixo
+        adicionando um padding ao topo dos objetos.
+    */
+    @if ($columns == 2) {
+        /* Margem direita*/
+        &:not(:nth-child(2n)) {
+            margin-right: $margin;
+        }
+        /* Deslocamento superior*/
+        &:nth-child(2n) {
+            padding-top: $width * $tgSkewDegrees;
+        }
+    }
+
+    @else if ($columns == 3) {
+        /* Assim como anteriormente, é necessário remover as dimensões anteriores*/
+        @include skewedDownBreakPoints(0, 0, 2);
+
+        &:not(:nth-child(3n)) {
+            margin-right: $margin;
+        }
+
+        &:nth-child(3n) {
+            padding-top: 2 * $width * $tgSkewDegrees;
+        }
+
+        &:nth-child(3n+2) {
+            padding-top: 1 * $width * $tgSkewDegrees;
+        }
+    }
+
+    @else if ($columns == 4) {
+        @include skewedDownBreakPoints(0, 0, 3);
+
+        &:not(:nth-child(4n)) {
+            margin-right: $margin;
+        }
+
+        &:nth-child(4n+4) {
+            padding-top: 3 * $width * $tgSkewDegrees;
+        }
+
+        &:nth-child(4n+2) {
+            padding-top: 1 * $width * $tgSkewDegrees;
+        }
+
+        &:nth-child(4n+3) {
+            padding-top: 2 * $width * $tgSkewDegrees;
+        }
+    }
+}

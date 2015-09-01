@@ -21,41 +21,53 @@
     </div>
 
     <div class="info">
-        <address>
-            <div class="mail">
-                <img src="{{ paths.theme }}images/mail.svg" alt="Ícone do Facebook" />
-                <a class="content" href="mailto:contato@oparque.art.br">contato@oparque.art.br</a>
-            </div>
+        <div class="background"></div>
 
-            <div class="phone">
-                <img src="{{ paths.theme }}images/phone.svg" alt="Ícone de telefone" />
-                <a class="content" href="tel:552732073446">+55 (27) 3207-3446</a>
-            </div>
+        <div class="content">
+            <address>
+                <div class="mail">
+                    <img src="{{ paths.theme }}images/mail.svg" alt="Ícone do Facebook" />
+                    <a href="mailto:contato@oparque.art.br">contato@oparque.art.br</a>
+                </div>
 
-            <div class="address">
-                <img src="{{ paths.theme }}images/pin.svg" alt="Ícone de endereço" />
-                <span class="content">
-                    Rua Sete de Setembro, 493.
-                    <br />Centro. Vitória - ES.
-                    <br />CEP: 29015-000.
-                </span>
-            </div>
-        </address>
+                <div class="phone">
+                    <img src="{{ paths.theme }}images/phone.svg" alt="Ícone de telefone" />
+                    <a href="tel:552732073446">+55 (27) 3207-3446</a>
+                </div>
 
-        <form method="get" action="/busca">
-            <input id="busca" name="busca" type="text" placeholder="Encontre algo aqui" />
-            <input type="submit" value="ir" />
-        </form>
+                <div class="address">
+                    <img src="{{ paths.theme }}images/pin.svg" alt="Ícone de endereço" />
+                    <span>
+                        Rua Sete de Setembro, 493. Centro. Vitória - ES. CEP: 29015-000.
+                    </span>
+                </div>
+            </address>
+
+            <div class="busca">
+                <form method="get" action="/busca">
+                    <input id="busca" name="busca" type="text" placeholder="Encontre algo aqui" />
+                    <input type="submit" value="ir" />
+                </form>
+
+                <img src="{{ paths.theme }}images/maos_busca.png" alt="" />
+            </div>
+        </div>
     </div>
 </footer>
 
 <!--[if lt IE 9]>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <![endif]-->
 <!--[if gte IE 9]><!-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <!--<![endif]-->
+<!--[if lte IE 9]>
+    <script src="{{ paths.theme }}scripts/jquery.placeholder.min.js"></script>
+    <script>
+        $(function () { $('input, textarea').placeholder(); });
+    </script>
+<![endif]-->
 
-<script src="{{ paths.theme }}javascripts/main.js" async defer></script>
+<script src="{{ paths.theme }}scripts/main.js" async defer></script>
 </body>
 </html>
