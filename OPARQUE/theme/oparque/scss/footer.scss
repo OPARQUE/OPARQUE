@@ -18,6 +18,10 @@ footer {
         }
     }
 
+    > .content {
+        font-size: 0;
+    }
+
     .conecte {
         margin: 3rem 0;
 
@@ -42,15 +46,11 @@ footer {
     }
 
     .info {
-        @extend .skewedUp;
+        @extend .skewedDown;
         font-size: 1.6rem;
         width: 100%;
         padding-top: 50% * $tgSkewDegrees;
         overflow: hidden;
-
-        .content {
-            //
-        }
 
         .background {
             background-color: $oparque-yellow;
@@ -110,7 +110,7 @@ footer {
         }
     }
 
-    @media all and (min-width: 21rem /*px*/ ) {
+    @media all and (min-width: 21rem /*336px*/ ) {
         .info {
             font-size: 1.8rem;
 
@@ -144,6 +144,24 @@ footer {
         }
     }
 
+    @media all and (min-width: 42rem /*672px*/ ) {
+        .info {
+            text-align: left;
+
+            address, .busca {
+                display: inline-block;
+                width: 45%;
+                margin-top: 0;
+                margin-left: 2rem;
+            }
+
+            .busca img {
+                width: 22rem;
+                bottom: 0;
+            }
+        }
+    }
+
     @media all and (min-width: 45rem /*720px*/ ) {
         .conecte {
             $email-input-margin: 1%;
@@ -162,6 +180,33 @@ footer {
             input[type=submit] {
                 width: .5 * $width;
                 margin-right: 0;
+            }
+        }
+    }
+
+    @media all and (min-width: 70rem /*1200px*/ ) {
+        .contato, .address {
+            display: inline-block;
+            width: 45%;
+            vertical-align: middle;
+            margin-top: 5rem;
+        }
+
+        .info {
+            address {
+                width: 60%;
+            }
+
+            .busca {
+                width: 35%;
+            }
+
+            .background {
+                @include transformSkew (-$skewDegrees);
+            }
+
+            .busca img {
+                width: 26rem;
             }
         }
     }
