@@ -57,6 +57,9 @@ Temporary Items
 # Bolt.cm
 ################################################################################
 
+# Log do servidor
+OPARQUE/bolt.log
+
 # Ignora arquivos da pasta cache, menos o arquivo index.html, que serve para versionar a pasta
 OPARQUE/app/cache/*
 !OPARQUE/app/cache/index.html

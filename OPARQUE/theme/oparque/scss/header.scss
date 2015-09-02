@@ -89,7 +89,7 @@ header {
     }
 }
 
-@media all and (min-width: 64rem) {
+@media all and (min-width: 64rem /*1024px*/ ) {
     header {
         .logo {
             a {
@@ -106,16 +106,10 @@ header {
             display: none;
         }
 
-        .social {
-            text-align: left;
-            width: 20rem;
-            left: 2rem;
-            top: 12rem;
-        }
-
         nav {
             display: block;
             text-align: center;
+            top: 3rem;
             left: 0;
             width: 100%;
 
@@ -134,19 +128,19 @@ header {
                 display: inline-block;
 
                 a {
-                    font-size: 2rem;
+                    font-size: 1.7rem;
                 }
 
                 &:nth-child(1), &:nth-child(2) {
-                    margin-right: 2rem;
+                    margin-right: 3rem;
                 }
 
                 &:nth-child(5), &:nth-child(6) {
-                    margin-left: 2rem;
+                    margin-left: 3rem;
                 }
 
                 &:nth-child(3) {
-                    margin-right: 35%;
+                    margin-right: 40%;
                 }
             }
         }
@@ -154,23 +148,7 @@ header {
 }
 
 @media all and (min-width: 68rem /*1056px*/ ) {
-    header nav li {
-        &:nth-child(1), &:nth-child(2) {
-            margin-right: 3rem;
-        }
-
-        &:nth-child(5), &:nth-child(6) {
-            margin-left: 3rem;
-        }
-
-        &:nth-child(3) {
-            margin-right: 35%;
-        }
-    }
-}
-
-@media all and (min-width: 70rem /*1120px*/ ) {
-    header nav li a {
-        font-size: 2.2rem;
+    header nav li:nth-child(3) {
+        margin-right: 35%;
     }
 }

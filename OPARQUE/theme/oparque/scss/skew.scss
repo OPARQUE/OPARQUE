@@ -9,12 +9,12 @@ $skewDegrees: 5deg;
 $tgSkewDegrees: .0875;
 
 /* Inclina um objeto e seus filhos */
-@mixin transformSkew ($degrees) {
-    -moz-transform: skewY($degrees);
-    -ms-transform: skewY($degrees);
-    -o-transform: skewY($degrees);
-    -webkit-transform: skewY($degrees);
-    transform: skewY($degrees);
+@mixin transformSkew ($degrees, $important: "") {
+    -moz-transform: skewY($degrees) #{$important};
+    -ms-transform: skewY($degrees) #{$important};
+    -o-transform: skewY($degrees) #{$important};
+    -webkit-transform: skewY($degrees) #{$important};
+    transform: skewY($degrees) #{$important};
 }
 
 .transformSkewUp {
@@ -111,7 +111,7 @@ $tgSkewDegrees: .0875;
         width: 100%;
         height: 100%;
         /* Posiciona à frente do background */
-        position: relative;
+        position: absolute;
         z-index: 2;
     }
 }

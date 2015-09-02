@@ -1,0 +1,199 @@
+@import "common.scss";
+@import "skew.scss";
+
+$projetos-margin: 2%;
+
+#projetos-container {
+    .categorias {
+        font-size: 0;
+
+        li {
+            @extend .skewedUp;
+            min-height: 15rem;
+            height: 15rem;
+            height: 30vh;
+            max-height: 30rem;
+            width: 100%;
+            font-size: 1.6rem;
+        }
+
+        .design .image {
+            background-image: url(../images/projetos/mao_design.jpg);
+        }
+
+        .arte .image {
+            background-image: url(../images/projetos/mao_arte.jpg);
+        }
+
+        .educacao .image {
+            background-image: url(../images/projetos/mao_educacao.jpg);
+        }
+
+        .eventos .image {
+            background-image: url(../images/projetos/mao_eventos.jpg);
+        }
+
+        a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        img {
+            height: 60%;
+            max-height: 100%;
+        }
+    }
+
+    .sobre {
+        color: $oparque-orange;
+        text-align: right;
+        margin: 7rem 0 0 0;
+
+        img {
+            max-width: 35rem;
+        }
+    }
+
+    .projetos {
+        font-size: 0;
+
+        li {
+            @extend .skewedDown;
+            height: 30rem;
+            width: 100%;
+            margin-bottom: $projetos-margin;
+        }
+
+        .background {
+            @extend .originLeft;
+        }
+
+        .content {
+            color: white;
+            text-transform: uppercase;
+            vertical-align: bottom;
+            padding: 1.5rem;
+            letter-spacing: .075em; /* Em "letter-spacing" prefiro o uso de "em" */
+        }
+
+        .info {
+            position: absolute;
+            width: calc(100% - 3rem);
+            bottom: 0;
+        }
+
+        .title {
+            font-size: 2.4rem;
+
+            span {
+                padding: .2rem 1.6rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.6rem;
+            text-align: right;
+
+            span {
+                padding: 1rem;
+            }
+        }
+
+        span {
+            display: inline-block;
+        }
+    }
+
+
+    @media all and (min-width: 25rem /*400px*/ ) {
+        .categorias img {
+            height: 80%;
+        }
+    }
+
+
+    @media all and (min-width: 30rem /*480px*/ ) {
+        .categorias img {
+            height: 100%;
+        }
+    }
+
+    @media all and (min-width: 38rem /*608px*/ ) {
+        .projetos {
+            li {
+                $width: (100% - $projetos-margin) / 2;
+                width: $width;
+                @include skewedDownBreakPoints($width, $projetos-margin, 2);
+            }
+        }
+    }
+
+    @media all and (min-width: 42rem /*672px*/ ) {
+        .sobre {
+            margin-right: 3rem;
+
+            p {
+                width: 66%;
+                margin-left: auto;
+            }
+        }
+    }
+
+    @media all and (min-width: 57rem /*912px*/ ) {
+        .projetos {
+            li {
+                $width: (100% - 2 * $projetos-margin) / 3;
+                width: $width;
+                @include skewedDownBreakPoints($width, $projetos-margin, 3);
+            }
+        }
+    }
+
+    @media all and (min-width: 64rem /*1024px*/ ) {
+        .categorias {
+            $min-height: 30rem;
+            $max-height: 45rem;
+            $height-fallback: 30rem;
+            $height: 35vh;
+
+            li {
+                $width: 50%;
+
+                width: $width;
+                height: $height-fallback;
+                height: $height;
+                min-height: $min-height;
+                max-height: $max-height;
+                @include skewedUpBreakPoints($width, 2);
+            }
+
+            .content {
+                height: $height-fallback;
+                height: $height;
+                min-height: $min-height;
+                max-height: $max-height;
+            }
+
+            img {
+                height: 85%;
+            }
+        }
+
+        .sobre p {
+            width: 50%;
+        }
+    }
+
+    @media all and (min-width: 76rem /*1216px*/ ) {
+        .projetos {
+            li {
+                $width: (100% - 3 * $projetos-margin) / 4;
+                width: $width;
+                @include skewedDownBreakPoints($width, $projetos-margin, 4);
+            }
+        }
+    }
+}
