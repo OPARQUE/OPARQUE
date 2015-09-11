@@ -91,7 +91,7 @@ footer {
 
         #busca {
             width: calc(100% - 4rem);
-            background-color: $oparque-yellow;
+            background-color: transparent;
         }
 
         .busca {
@@ -194,7 +194,7 @@ footer {
             vertical-align: middle;
             margin-top: 7rem;
             margin-bottom: 3rem;
-            margin-left: 2rem
+            margin-left: 2rem;
         }
 
         .info {
@@ -214,6 +214,10 @@ footer {
 
             .busca img {
                 width: 26rem;
+            }
+
+            input[type=submit] {
+                color: #e0e0e0;
             }
         }
     }

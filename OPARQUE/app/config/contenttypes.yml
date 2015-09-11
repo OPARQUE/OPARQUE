@@ -12,5 +12,5 @@ projetos:
     imagem:
       type: image
     texto:
-      type: html
+      type: markdown
       height: 350px

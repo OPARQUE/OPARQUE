@@ -10,7 +10,6 @@ $projetos-margin: 2%;
         li {
             @extend .skewedUp;
             min-height: 15rem;
-            height: 15rem;
             height: 30vh;
             max-height: 30rem;
             width: 100%;
@@ -37,23 +36,23 @@ $projetos-margin: 2%;
             display: inline-block;
             width: 100%;
             height: 100%;
-            vertical-align: middle;
             text-align: center;
         }
 
         img {
-            height: 60%;
-            max-height: 100%;
+            display: inline-block;
+            width: 90%;
+            height: 90%;
         }
     }
 
     .sobre {
-        color: $oparque-orange;
         text-align: right;
-        margin: 7rem 0 0 0;
+        margin: 6rem 0 5rem 0;
 
-        img {
-            max-width: 35rem;
+        h1 {
+            font-size: 4rem;
+            margin: 0;
         }
     }
 
@@ -111,6 +110,10 @@ $projetos-margin: 2%;
     @media all and (min-width: 25rem /*400px*/ ) {
         .categorias img {
             height: 80%;
+        }
+
+        .sobre h1 {
+            font-size: 5rem;
         }
     }
 
